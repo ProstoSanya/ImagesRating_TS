@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Profile'}) %>
+</head>
+<body>
+	<div id="profile">
+		<div id="top">
+			<%- include('parts/menu.ejs') %>
+			<div id="loginBlock">You are logged in as <span id="user_name"><%= userName %></span><a href="logout">Logout</a></div>
+		</div>
+		<br><br>
+		
+		<div>
+			<% if (typeof message !== 'undefined' && message) { %><div class="message_text"><%= message %></div><% } %>
+			<% if (typeof error !== 'undefined' && error) { %><div class="error_text"><%= error %></div><% } %>
+		</div>
+		
+		<div class="prof-top">
+			<div id="profile_info">
+				<ul>
+					<li><span>Username:</span><span><%= userName %></span></li>
+					<li><span>E-mail:</span><span><%= email %></span></li>
+					<li><span>Registered at:</span><span><%= registeredAt %></span></li>
+					<li><span>Images uploaded:</span><span><%= totalImagesCount %></span></li>
+					<li><span>Rating (number of likes):</span><span><%= totalLikesCount %></span></li>
+				</ul>
+			</div>
+			
+			<form method="POST" enctype="multipart/form-data" action="/profile/upload">
+				Title: <input name="imageTitle" type="text" required /><br>
+				Image: <input name="image" type="file" accept="image/*" required /><br>
+				<input value="Upload" type="submit" />
+			</form>
+		</div>
+		<br>
+		
+		<% if(totalImagesCount > 0){ %>
+			<div class="prof-info">Latest added images:</div>
+			<ul id="imagesList_profile" class="imagesList" data-authorid="<%= userId %>">
+			<% for(let i=images.length - 1;i>=0;i--){ %>
+				<li>
+					<div class="imageInfo">
+						<b><%= images[i].title %></b><span class="likeInfo" onselectstart="return false">
+							<span class="likeIcon"></span>
+							<span class="likesCount"><%= images[i].ratings.length %></span>
+						</span>
+					</div>
+					<br>
+					<div><img title="<%= images[i].title %>" src="/uploads/<%= userName %>/<%= images[i].filename %>" /></div>
+				</li>
+			<% } %>
+			</ul>
+			<div class="see_all"><a href="/users/<%= userName %>/">See all</a></div>
+		<% } %>
+	</div>
+</body>
+</html>

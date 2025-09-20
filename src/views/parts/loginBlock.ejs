@@ -1,0 +1,9 @@
+<div id="loginBlock">
+<% if(typeof userId !== 'undefined' && userId){ %>
+	Logged in as <span id="user_name"><%= username %></span><a href="/profile">Profile</a><a href="/logout">Log Out</a><br><br>
+	<input type="hidden" id="userid" value="<%= userId %>" />
+<% } else { %> 
+	<a href="/login">Sign In</a><a href="/register">Sign Up</a><br /><br />
+	<input type="hidden" id="userid" value="<%= String(userId) %>" />
+<% } %>
+</div>

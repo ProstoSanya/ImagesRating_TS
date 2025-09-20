@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Registration'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div>
+		<% if(Array.isArray(error)){ %>
+			<% for(let err of error){ %>
+				<div class="error_text"><%= error %></div><br>
+			<% } %>
+		<% } else if (typeof error === 'string' && error) { %>"/>
+			<div class="error_text"><%= error %></div><br>
+		<% } %>
+		<form method="POST">
+			<label>
+				Login:
+				<input name="username" type="text" value="<% if(typeof(username) != 'undefined'){ %><%= username %><% } %>"/>
+			</label>
+			<label>
+				E-mail:
+				<input name="email" type="text" value="<% if(typeof(email) != 'undefined'){ %><%= email %><% } %>"/>
+			</label>
+			<label>
+				Password:
+				<input name="password" type="text" value="<% if(typeof(password) != 'undefined'){ %><%= password %><% } %>"/>
+			</label>
+			<label>
+				Repeat password:
+				<input name="password2" type="text" value="<% if(typeof(password2) != 'undefined'){ %><%= password2 %><% } %>"/>
+			</label>
+			<input name="submit_btn" type="submit" value="Register" />
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<ul id="<%= tagId %>" class="imagesList" data-authorid="<% if(typeof authorid != 'undefined'){ %> <%= authorid %> <% } %>">
+<% for(let i=0;i<images.length;i++){ %>
+	<li>
+		<div class="imageInfo">
+			<b><%= images[i].title %></b><% if(typeof(isUserPage) == 'undefined' || !isUserPage){ %> (<a href="/users/<%= images[i].username %>/"><%= images[i].username %></a>)<% } %>
+			<span class="likeInfo" data-authorid="<%= images[i]._id %>" data-filename="<%= images[i].filename %>" onselectstart="return false">
+				<span class="likeIcon<% if(userId && Array.isArray(images[i].likes) && images[i].likes.includes(userId)){ %><%= ' added' %><% } %>"></span>
+				<span class="likesCount"><%= images[i].likes.length %></span>
+			</span>
+		</div>
+		<br>
+		<div><img src="/uploads/<%= images[i].username %>/<%= images[i].filename %>" data-authorid="<%= images[i]._id %>" /></div>
+	</li>
+<% } %>
+</ul>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Users'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div id="users">
+		<table>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Registered At</td>
+					<td>Images</td>
+					<td>Rating</td>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(let i=0;i<list.length;i++){ %>
+				<tr>
+					<td><a href="/users/<%= list[i].name %>"><%= list[i].name %></a></td>
+					<td><%= list[i].registeredAt %></td>
+					<td><%= list[i].imagesCount %></td>
+					<td><%= list[i].likesCount %></td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

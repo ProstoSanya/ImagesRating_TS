@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Error'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div id="error_container">
+		<h1><%= code %></h1>
+		<div class="error_text"><%= errorMessage %></div>
+		<% if(typeof errors !== 'undefined' && Array.isArray(errors)){ %>
+			<% for(let error of errors){ %>
+				<div class="error_text"><%= error %></div>
+			<% } %>
+		<% } %>
+	</div>
+</body>
+</html>

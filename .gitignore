@@ -1,0 +1,5 @@
+node_modules/
+src/public/uploads/*
+app.yaml
+package-lock.json
+.env

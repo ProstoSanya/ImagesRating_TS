@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Gallery'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div id="main">
+		<br>
+		<div class="selectContainer">
+			Sort&nbsp;by&nbsp;<select id="sortBy">
+				<option value="latest" <% if(sortBy != 'popular'){ %><%= ' selected' %><% } %> >Upload date</option>
+				<option value="popular" <% if(sortBy == 'popular'){ %><%= ' selected' %><% } %> >Rating</option>
+			</select>
+		</div>
+		<br>
+
+		<%- include('parts/imagesList.ejs', {images, tagId: 'images'}) %>
+		<br>
+
+	</div>
+</body>
+</html>

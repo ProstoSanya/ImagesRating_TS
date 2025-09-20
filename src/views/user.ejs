@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'User'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div>
+		<h2><%= authorName %>'s gallery</h2>
+		<div class="error_text"><%= error %></div><br>
+		<div class="message_text"><%= message %></div><br>
+		<%- include('parts/imagesList.ejs', {images, tagId: 'imagesList', authorId}) %>
+	</div>
+</body>
+</html>

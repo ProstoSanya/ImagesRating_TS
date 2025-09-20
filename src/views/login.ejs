@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('parts/head.ejs', {title: 'Sign In'}) %>
+</head>
+<body>
+	<div id="top">
+		<%- include('parts/menu.ejs') %>
+		<%- include('parts/loginBlock.ejs') %>
+	</div>
+	<div>
+		<div class="error_text"><%= error %></div>
+		<form method="POST" action="login">
+			<label>
+				Username: <input name="username" type="text" value="" />
+			</label>
+			<label>
+				Password: <input name="password" type="text" value="" />
+			</label>
+			<input value="Enter" type="submit" />
+		</form>
+	</div>
+</body>
+</html>
